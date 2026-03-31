@@ -6,7 +6,130 @@
         xmlns:local="clr-namespace:задание_тк"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Text="Вычисление оптимального веса" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"/>
+
+        <!-- Рост -->
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="Рост (см):" 
+                   VerticalAlignment="Center" 
+                   Margin="0,5"
+                   FontSize="14"/>
+        <TextBox Grid.Row="1" Grid.Column="1" 
+                 x:Name="txtHeight" 
+                 Margin="10,5" 
+                 Height="25"
+                 FontSize="14"
+                 PreviewTextInput="TxtHeight_PreviewTextInput"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" 
+                   x:Name="txtHeightError" 
+                   Foreground="Red" 
+                   FontSize="11"
+                   Margin="10,30,10,5"
+                   Visibility="Collapsed"/>
+
+        <!-- Вес -->
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+                   Text="Вес (кг):" 
+                   VerticalAlignment="Center" 
+                   Margin="0,5"
+                   FontSize="14"/>
+        <TextBox Grid.Row="2" Grid.Column="1" 
+                 x:Name="txtWeight" 
+                 Margin="10,5" 
+                 Height="25"
+                 FontSize="14"
+                 PreviewTextInput="TxtWeight_PreviewTextInput"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" 
+                   x:Name="txtWeightError" 
+                   Foreground="Red" 
+                   FontSize="11"
+                   Margin="10,30,10,5"
+                   Visibility="Collapsed"/>
+
+        <!-- Пол -->
+        <TextBlock Grid.Row="3" Grid.Column="0" 
+                   Text="Пол:" 
+                   VerticalAlignment="Center" 
+                   Margin="0,10"
+                   FontSize="14"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" 
+                    Orientation="Horizontal" 
+                    Margin="10,10">
+            <RadioButton x:Name="rbMale" 
+                         Content="Мужчина" 
+                         GroupName="Gender" 
+                         IsChecked="True"
+                         Margin="0,0,20,0"
+                         FontSize="14"/>
+            <RadioButton x:Name="rbFemale" 
+                         Content="Женщина" 
+                         GroupName="Gender"
+                         FontSize="14"/>
+        </StackPanel>
+
+        <!-- Кнопка вычислить -->
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                Content="Вычислить" 
+                x:Name="btnCalculate"
+                Click="BtnCalculate_Click"
+                Height="35"
+                Margin="0,20"
+                FontSize="14"
+                FontWeight="Bold"
+                Background="#4CAF50"
+                Foreground="White"
+                BorderThickness="0"
+                Cursor="Hand"/>
+
+        <!-- Результаты -->
+        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" 
+                BorderBrush="#CCCCCC" 
+                BorderThickness="1" 
+                CornerRadius="5" 
+                Padding="15"
+                Margin="0,10"
+                Background="#F5F5F5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" 
+                           x:Name="txtOptimalWeight" 
+                           Text="Оптимальный вес: -" 
+                           FontSize="16" 
+                           FontWeight="Bold"
+                           Margin="0,5"/>
+
+                <TextBlock Grid.Row="1" 
+                           x:Name="txtAssessment" 
+                           Text="Характеристика: -" 
+                           FontSize="14"
+                           Margin="0,10,0,5"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
